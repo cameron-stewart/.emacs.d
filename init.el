@@ -25,3 +25,7 @@
 ;; Add and enable better-defaults
 (add-to-list 'load-path "~/.emacs.d/better-defaults")
 (require 'better-defaults)
+
+;; Add line numbers in the margin
+(global-linum-mode t)
+
