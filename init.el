@@ -18,3 +18,6 @@
 (require 'color-theme-solarized)
 
 (color-theme-solarized)
+
+(require 'ido)
+(ido-mode t)
