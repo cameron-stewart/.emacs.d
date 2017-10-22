@@ -1,3 +1,6 @@
 [submodule "emacs-color-theme-solarized"]
 	path = emacs-color-theme-solarized
 	url = https://github.com/sellout/emacs-color-theme-solarized.git
+[submodule "better-defaults"]
+	path = better-defaults
+	url = https://github.com/technomancy/better-defaults.git
