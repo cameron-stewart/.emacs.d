@@ -54,7 +54,14 @@
 ;; Enable LaTeX outline minor mode
 (defun turn-on-outline-minor-mode ()
 (outline-minor-mode 1))
-
 (add-hook 'LaTeX-mode-hook 'turn-on-outline-minor-mode)
 (add-hook 'latex-mode-hook 'turn-on-outline-minor-mode)
 (setq outline-minor-mode-prefix "\C-c \C-o")
+
+;;change indentation level to 3
+(setq-default c-basic-offset 3)
+
+;;default to c++ mode for .h files
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(c-set-offset 'innamespace 0)
