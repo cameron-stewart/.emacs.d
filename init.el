@@ -65,3 +65,7 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (c-set-offset 'innamespace 0)
+
+;;Add speedbar in current frame
+(add-to-list 'load-path "~/.emacs.d/sr-speedbar")
+(require 'sr-speedbar)
