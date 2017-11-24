@@ -1,3 +1,12 @@
+;; load emacs 24's package system. Add MELPA repository.
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
+   '("melpa" . "http://melpa.milkbox.net/packages/")
+   t))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -29,36 +38,8 @@
 ;; Add line numbers in the margin
 (global-linum-mode t)
 
-;; Enable AUCTeX plugin
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq TeX-save-query nil)
-(setq TeX-PDF-mode t)
 
-;; Enable flymake syntax check for latex
-(require 'flymake)
-
-(defun flymake-get-tex-args (file-name)
-(list "pdflatex"
-(list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
-
-(add-hook 'LaTeX-mode-hook 'flymake-mode)
-
-;; Enable spell checking in LaTeX mode
-(setq ispell-program-name "aspell") ; could be ispell as well, depending on your preferences
-(setq ispell-dictionary "english") ; this can obviously be set to any language your spell-checking program supports
-
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'flyspell-buffer)
-
-;; Enable LaTeX outline minor mode
-(defun turn-on-outline-minor-mode ()
-(outline-minor-mode 1))
-(add-hook 'LaTeX-mode-hook 'turn-on-outline-minor-mode)
-(add-hook 'latex-mode-hook 'turn-on-outline-minor-mode)
-(setq outline-minor-mode-prefix "\C-c \C-o")
-
-;;change indentation level to 3
+;;change c indentation level to 3
 (setq-default c-basic-offset 3)
 
 ;;default to c++ mode for .h files
@@ -66,6 +47,9 @@
 
 (c-set-offset 'innamespace 0)
 
-;;Add speedbar in current frame
-(add-to-list 'load-path "~/.emacs.d/sr-speedbar")
+;;Add loadpath for c++ IDE stuff
+(add-to-list 'load-path "~/.emacs.d/cpp")
+
+;; add speedbar in frame
 (require 'sr-speedbar)
+(global-set-key (kbd "C-c b") 'sr-speedbar-toggle)
